@@ -4,6 +4,13 @@ module.exports = (sequelize, DataTypes) => {
     lastName: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
-  }, {});
+  }, {
+    getterMethods: {
+      fullName() {
+        return `${this.firstName} ${this.lastName}`;
+      },
+    },
+  });
+
   return user;
 };

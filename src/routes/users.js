@@ -36,6 +36,17 @@ router.get('users-show', '/:id', async (ctx) => {
   ctx.body = ctx.state.user;
 });
 
+router.get('users-edit', '/:id/edit', (ctx) => {
+  const { user } = ctx.state;
+  return ctx.render(
+    'users/edit',
+    {
+      user,
+      submitPath: ctx.router.url('users-update', user.id),
+    },
+  );
+});
+
 router.patch('users-update', '/:id', async (ctx) => {
   ctx.body = await ctx.state.user.update(
     ctx.request.body,
