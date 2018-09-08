@@ -10,7 +10,14 @@ router.param('id', async (id, ctx, next) => {
 });
 
 router.get('users', '/', async (ctx) => {
-  ctx.body = await ctx.orm.user.findAll();
+  const users = await await ctx.orm.user.findAll();
+  return ctx.render('users/index', {
+    users,
+    newUserPath: ctx.router.url('users-new'),
+    getShowPath: user => ctx.router.url('users-show', user.id),
+    getEditPath: user => ctx.router.url('users-edit', user.id),
+    getDestroyPath: user => ctx.router.url('users-destroy', user.id),
+  });
 });
 
 router.post('users-create', '/', async (ctx) => {
