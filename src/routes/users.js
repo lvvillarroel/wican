@@ -23,6 +23,7 @@ router.get('users', '/', async (ctx) => {
 router.get('users-new', '/new', ctx => ctx.render(
   'users/new',
   {
+    user: ctx.orm.user.build(),
     submitPath: ctx.router.url('users-create'),
   },
 ));
@@ -50,7 +51,7 @@ router.get('users-edit', '/:id/edit', (ctx) => {
 router.patch('users-update', '/:id', async (ctx) => {
   ctx.body = await ctx.state.user.update(
     ctx.request.body,
-    { fields: ['firstName', 'lastName', 'password'] },
+    { fields: ['firstName', 'lastName', 'email', 'password'] },
   );
 });
 
