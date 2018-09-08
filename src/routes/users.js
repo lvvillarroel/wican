@@ -20,6 +20,13 @@ router.get('users', '/', async (ctx) => {
   });
 });
 
+router.get('users-new', '/new', ctx => ctx.render(
+  'users/new',
+  {
+    submitPath: ctx.router.url('users-create'),
+  },
+));
+
 router.post('users-create', '/', async (ctx) => {
   await ctx.orm.user.create(ctx.request.body);
   ctx.redirect(ctx.router.url('users'));

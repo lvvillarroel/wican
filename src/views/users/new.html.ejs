@@ -1,0 +1,25 @@
+<h1>Crear usuario</h1>
+
+<div>
+  <form action="<%= submitPath %>" method="post">
+    <label for="firstName">
+      <span>nombre</span>
+      <input type="text" name="firstName" id="firstName" />
+    </label>
+    <label for="lastName">
+      <span>apellido</span>
+      <input type="text" name="lastName" id="lastName" />
+    </label>
+    <label for="email">
+      <span>e-mail</span>
+      <input type="email" name="email" id="email" />
+    </label>
+    <label for="password">
+      <span>contraseña</span>
+      <input type="password" name="password" id="password" />
+    </label>
+    <div class="actions">
+      <input type="submit" value="Crear" />
+    </div>
+  </form>
+</div>
