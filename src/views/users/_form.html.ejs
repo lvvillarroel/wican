@@ -1,23 +1,43 @@
 <div>
   <form action="<%= submitPath %>" method="post">
+    <% if (locals.errors) { %>
+      <p class="errors">Debes corregir los siguientes errores antes de continuar:</p>
+      <ul>
+        <% Object.keys(errors).forEach(prop => { %>
+          <li><%= prop %>: <%= errors[prop].message %></li>
+        <% }) %>
+      </ul>
+    <% } %>
     <% if (!user.isNewRecord) { %>
       <input type="hidden" name="_method" value="patch" />
     <% } %>
     <label for="firstName">
       <span>nombre</span>
       <input type="text" name="firstName" id="firstName" value="<%= user.firstName %>" />
+      <% if (locals.errors && errors.firstName) { %>
+       <span class="error"><%= errors.firstName.message %></span>
+      <% } %>
     </label>
     <label for="lastName">
       <span>apellido</span>
       <input type="text" name="lastName" id="lastName" value="<%= user.lastName %>" />
+      <% if (locals.errors && errors.lastName) { %>
+       <span class="error"><%= errors.lastName.message %></span>
+      <% } %>
     </label>
     <label for="email">
       <span>e-mail</span>
       <input type="email" name="email" id="email" value="<%= user.email %>" />
+      <% if (locals.errors && errors.email) { %>
+       <span class="error"><%= errors.email.message %></span>
+      <% } %>
     </label>
     <label for="password">
       <span>contraseña</span>
       <input type="password" name="password" id="password" />
+      <% if (locals.errors && errors.password) { %>
+       <span class="error"><%= errors.password.message %></span>
+      <% } %>
     </label>
     <div class="actions">
       <input type="submit" value="<%= user.isNewRecord ? 'Crear' : 'Editar' %>" />
