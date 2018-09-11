@@ -7,6 +7,7 @@
     <% if (env !== 'development') { %>
       <link rel="stylesheet" href="<%= assetPath('app.css') %>">
     <% } %>
+    <link href="https://unpkg.com/ionicons@4.4.2/dist/css/ionicons.min.css" rel="stylesheet">
   </head>
 
   <body>
@@ -14,6 +15,11 @@
       <div id="logo">
         <img src="<%= assetPath('logo.png') %>" alt="Logo" />
       </div>
+      <nav>
+        <a href="/">Inicio</a>
+        <a href="<%= ngosPath %>">ONGs</a>
+        <a href="">Sobre nosotros</a>
+      </nav>
     </header>
     <%- body %>
     <script src="<%= assetPath('app.js') %>"></script>
