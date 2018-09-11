@@ -17,7 +17,7 @@ router.get('ngos', '/', async (ctx) => {
   });
 });
 
-router.get('ngo-show', '/:id', async (ctx) => {
+router.get('ngos-show', '/:id', async (ctx) => {
   ctx.body = ctx.state.ngo;
 });
 
