@@ -1,0 +1,14 @@
+<h1>ONGs participantes</h1>
+
+<ul class="ngos-list">
+  <% ngos.forEach(ngo => { %>
+    <li>
+    <a href="<%= getShowPath(ngo) %>">
+      <img src="<%= ngo.logo %>" alt="Logo de ONG"/>
+      <span><%= ngo.name %></span>
+      <a href="<%= ngo.website %>"><i class="icon ion-ios-link"></i></a>
+      <a href="mailto:<%= ngo.email %>"><i class="icon ion-ios-mail"></i></a>
+    </a>
+    </li>
+  <% }) %>
+</ul>
