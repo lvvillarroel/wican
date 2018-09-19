@@ -2,3 +2,95 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333333;
+  padding: 100px 10px 10px;
+}
+
+a {
+  color: darken($color: $wican-blue, $amount: 10%);
+  text-decoration: none;
+  transition: all 300ms ease-in;
+  &:hover {
+    color: $wican-blue;
+    text-shadow: 0px 0px 20px $wican-yellow;
+  }
+}
+
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: white;
+  z-index: 1;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0px 2px 8px 0 #0002;
+  nav { // nested selectors are something that SCSS resolves into a normal selector when transpiling to CSS. This one is actually the "header nav" selector
+    display: flex;
+    margin-left: 30px;
+    height: 100%;
+    a {
+      height: 100%;
+      padding: 0 20px;
+      display: block;
+      position: relative;
+      line-height: 80px;
+      color: red;
+      transition: background 200ms ease-in;
+      &::after { // & means repeating the same containing selector so we can append the ::after. If we write a::after here would mean a::after inside another anchor
+        display: block;
+        content: "";
+        border-left: 1px solid #ddd;
+        height: 50%;
+        position: absolute;
+        right: 0px;
+        top: 50%;
+        transform: translateY(-50%)
+      }
+      &:nth-child(5n+1) {
+        color: $wican-blue; // variables!! defined in variables.scss. This is also part of SCSS, not CSS itself
+        &:hover {
+          background: lighten($color: $wican-blue, $amount: 55%);
+        }
+      }
+      &:nth-child(5n+2) {
+        color: $wican-yellow;
+        &:hover {
+          background: lighten($color: $wican-yellow, $amount: 32%);
+        }
+      }
+      &:nth-child(5n+3) {
+        color: $wican-cyan;
+        &:hover {
+          background: lighten($color: $wican-cyan, $amount: 50%);
+        }
+      }
+      &:nth-child(5n+4) {
+        color: $wican-orange;
+        &:hover {
+          background: lighten($color: $wican-orange, $amount: 40%);
+        }
+      }
+      &:nth-child(5n+5) {
+        color: $wican-green;
+        &:hover {
+          background: lighten($color: $wican-green, $amount: 50%);
+        }
+      }
+    }
+  }
+}
+
+#logo {
+  height: 100%;
+  img {
+    height: 100%;
+  }
+}
